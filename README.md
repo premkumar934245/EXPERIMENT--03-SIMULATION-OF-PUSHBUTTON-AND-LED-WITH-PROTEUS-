@@ -1,13 +1,7 @@
-# EXPERIMENT 03 
-
-### Name: BARATHRAJ K
-### Reg no :212224230033
-
-## SIMULATION OF PUSHBUTTON AND LED INTERFACE WITH ARM CONTROLLER AND PROTEUS 
-## Aim: 
-To Interface a Digital output (LED) and Digital input (Pushbutton) to ARM development board , and simulate it in Proteus 
-## Components required: 
-STM32 CUBE IDE, Proteus 8 simulator .
+# EXPERIMENT--03-SIMULATION-OF-PUSHBUTTON-AND-LED INTERFACE WITH ARM CONTROLLER AND PROTEUS 
+## Name: BARATHRAJ K(212224230033)
+## Aim: To Interface a Digital output (LED) and Digital input (Pushbutton) to ARM development board , and simulate it in Proteus 
+## Components required: STM32 CUBE IDE, Proteus 8 simulator .
 ## Theory 
 The full form of an ARM is an advanced reduced instruction set computer (RISC) machine, and it is a 32-bit processor architecture expanded by ARM holdings. The applications of an ARM processor include several microcontrollers as well as processors. The architecture of an ARM processor was licensed by many corporations for designing ARM processor-based SoC products and CPUs. This allows the corporations to manufacture their products using ARM architecture. Likewise, all main semiconductor companies will make ARM-based SOCs such as Samsung, Atmel, TI etc.
 
@@ -79,6 +73,10 @@ We are now at the last part of step by step guide on how to simulate STM32 proje
 
 ## STM 32 CUBE PROGRAM :
 ```
+NAME: BARATHRAJ K
+REG: 212224230033
+
+
 #include "main.h"
 #include <stdbool.h>
 
@@ -102,14 +100,14 @@ int main(void)
 
 void push_button()
 {
-  button_status = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_5);
+  button_status = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);   // PA0 INPUT
   if (button_status == 0)
   {
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);  // PA5 OUTPUT
   }
   else
   {
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
   }
 }
 
@@ -149,14 +147,16 @@ static void MX_GPIO_Init(void)
 
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);   // PA5 output reset
 
-  GPIO_InitStruct.Pin = GPIO_PIN_5;
+  // PA0 → Button Input
+  GPIO_InitStruct.Pin = GPIO_PIN_0;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  GPIO_InitStruct.Pin = GPIO_PIN_11;
+  // PA5 → LED Output
+  GPIO_InitStruct.Pin = GPIO_PIN_5;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -176,26 +176,17 @@ void assert_failed(uint8_t *file, uint32_t line)
 {
 }
 #endif
+
 ```
-
-
-
-
 ## Output screen shots of proteus  :
-<img width="742" height="862" alt="Screenshot 2025-09-03 085748" src="https://github.com/user-attachments/assets/a1dcf4b6-429b-426c-bc95-e154104ee524" />
-<img width="802" height="883" alt="Screenshot 2025-09-03 085801" src="https://github.com/user-attachments/assets/07f1de4e-7fb8-47e2-b528-dc1f057470f6" />
+<img width="789" height="617" alt="image" src="https://github.com/user-attachments/assets/3b45efe2-8d55-4371-bc1f-f4178dcc4c25" />
 
-
-
-
-
-## Proteus layout
- <img width="681" height="713" alt="image" src="https://github.com/user-attachments/assets/1e855c75-3a79-44fc-8b1e-0c6a6b8662b8" />
-
- 
- 
- 
+## Proteus layout(Add pdf screen shot of circuit here)
+<img width="687" height="703" alt="image" src="https://github.com/user-attachments/assets/ff236142-baa5-49b1-9bb1-a6b1e2c2ffaa" />
+  
 ## Result :
 Interfacing a digital output and digital input  with ARM microcontroller are simulated in proteus and the results are verified.
+
+
 
 
